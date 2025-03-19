@@ -5,6 +5,10 @@
   
  <configuration>
  	
+	<typeAliases>
+		<typeAlias type="com.kh.spring.member.model.dto.MemberDTO" alias="memberDTO"/>
+	</typeAliases>
+
  	
  	<!-- 
  		environments, dataSource => DB연결정보
@@ -14,4 +18,7 @@
 
  	 -->
  	 
+ 	 <mappers>
+ 	 	<mapper resource="/mappers/member-mapper.xml"/>
+ 	 </mappers>
 </configuration>
