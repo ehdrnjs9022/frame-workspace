@@ -1,5 +1,7 @@
 package com.kh.spring.member.model.service;
 
+import javax.servlet.http.HttpSession;
+
 import com.kh.spring.member.model.dto.MemberDTO;
 
 public interface MemberService { // 인터페이스 = 약관 계약서
@@ -16,7 +18,7 @@ public interface MemberService { // 인터페이스 = 약관 계약서
 	
 	// 회원수정
 	// int udate(MemberDTO member, HttpSession session); 1번
-	MemberDTO update(MemberDTO member);					// 2번
+	void update(MemberDTO member, HttpSession session);		// 2번
 	
 	//탈퇴
 	int delete(MemberDTO member);

@@ -31,7 +31,7 @@
  			,	MEMBER_PW memberPw 		
  			,	MEMBER_NAME memberName
  			,	EMAIL
- 			,	ENDOLLDATE enrollDate
+ 			,	ENDOLLDATE endollDate
  		FROM
  				KH_MEMBER
  		WHERE
