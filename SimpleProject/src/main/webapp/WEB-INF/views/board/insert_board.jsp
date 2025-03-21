@@ -73,41 +73,39 @@
                 </table>
                 <br>
 	
-				<script>
-					function changeImage(file){
-						//console.log(fil	e);
-						
-						console.log(file.files);
-						// files : 선택된 파일의 정보가 들어있는 객체
+			<script>
+	    function changeImage(file){	// 파일이 첨부되었을 경우
+	        //console.log(file);		
+	        console.log(file.files);	
+	
+	        // file.files.length == 1  파일 선택됨
+	        // file.files.length == 0  선택취소됨
+	
+	        // 파일이 첨부되었을 경우에는 file.files 
+	        // 0번속성을 보면 파일 정보를 확인할 수 있음
+	        //console.log(file.files[0]);
+	
+	        // falsy한 값 == 0, 0.0, undefined, null
+	        const imgEl = document.querySelector('#img-area>img');
+	
+	        if(file.files.length){	// 파일이 첨부되었을 경우
+	            const reader = new FileReader();
+	            reader.readAsDataURL(file.files[0]);
+	
+	            reader.onload = function(e){
+	                //console.log(e.target.result);
+	                const url = e.target.result;
+	                imgEl.src = url;
+	            }
+	
+	        }else{
+	            const url = 'http://www.adobe.com/kr/express/feature/image/remove-background/jpg-to-png/media_17e9d2503c0ecdea37e6d9bc6e2beb26adb470617.png?width=750&format=png&optimize=medium';
+	            imgEl.src = url;
+	        }
+	    }
+	</script>
 					
-						// file.files.length == 1 파일선택됨
-						// file.files.length == 0 선택취소함
-						
-						// 파일이 첨부되었을 경우에는 file.files 
-						// 0번속성을 보면 파일 정보를 확인할 수 있음
-						//console.log(file.files[0]);
-						
-						// falsy한 값 === 0, 0.0, undefiend, null
-						const igmEl = document.querySelector('#img-area>img');
-						if(file.files.length){
-							
-							const reader = new FileReader();
-							reader.readAsDataURL(file.files[0]);
-							
-							reader.onload = function(e){
-								
-								//console.log(e.target.result);
-								const url = e.target.result;
-								
-							}
-						} else{
-							const img =  url주소 //취소시
-							imgEl.src = img ;
-							
-						}
-					}
-				
-				</script>
+					
 				
 
 

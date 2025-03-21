@@ -4,13 +4,25 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
   
  <configuration>
+	
+	<!-- java null -> jdbc로 null 값가져오기
+		첨부파일 null일경우임 -> DB는 0으로나옴?
+	  -->
+	
+	<settings>
+		<setting name="jdbcTypeForNull"  value="NULL"/>
+	</settings>
  	
 	<typeAliases>
 		<typeAlias type="com.kh.spring.member.model.dto.MemberDTO" alias="memberDTO"/>
 	</typeAliases>
 
+
  	
+ 
  	<!-- 
+	
+
  		environments, dataSource => DB연결정보
  		xml 하위패키지,클래스가 getter역할 / dataSource, property setter역할
  		
@@ -20,5 +32,6 @@
  	 
  	 <mappers>
  	 	<mapper resource="/mappers/member-mapper.xml"/>
+ 	 	<mapper resource="/mappers/board-mapper.xml"/>
  	 </mappers>
 </configuration>
