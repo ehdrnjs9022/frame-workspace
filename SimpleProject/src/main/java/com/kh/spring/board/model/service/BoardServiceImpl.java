@@ -21,7 +21,6 @@ import com.kh.spring.board.model.mapper.BoardMapper;
 import com.kh.spring.exception.AuthenticationException;
 import com.kh.spring.exception.InvalidParameterException;
 import com.kh.spring.member.model.dto.MemberDTO;
-import com.kh.spring.reply.model.dto.ReplyDTO;
 import com.kh.spring.util.model.dto.PageInfo;
 import com.kh.spring.util.template.pagination;
 
@@ -52,7 +51,22 @@ public class BoardServiceImpl implements BoardService {
 			throw new InvalidParameterException("유효하지 않은 요청입니다.");
 		}
 		// 2_2)
+		/*
+		 * 	<, > , \ ,
+		 * 	
+		 */
 		
+		String boardTitle 
+			= board.getBoardTitle().replaceAll("<", "&lt;")
+								   .replaceAll(">","&gt;")
+								   .replaceAll("\n", "<br>");
+		String boardContent
+			= board.getBoardContent().replaceAll("<", "&lt;")
+									 .replaceAll(">","&gt;")
+									 .replaceAll("\n", "<br>");
+		
+		board.setBoardTitle(boardTitle);
+		board.setBoardContent(boardContent);
 		
 		// 3) 파일유무체크 // 이름바꾸기 + 저장
 		if(!file.getOriginalFilename().isEmpty()) {
@@ -113,7 +127,6 @@ public class BoardServiceImpl implements BoardService {
 	}
 	//-------------------------------------------------------------
 	
-	
 	@Override
 	public BoardDTO selectBoard(int boardNo) {
 		// 1절 board-mapper sql 작성
@@ -130,10 +143,6 @@ public class BoardServiceImpl implements BoardService {
 		//List<ReplyDTO> replyList = boardMapper.selectReply(boardNo);
 		//board.setReplyList(replyList);
 		
-		
-		
-		
-		
 		return board;		
 		
 	}
@@ -147,5 +156,46 @@ public class BoardServiceImpl implements BoardService {
 	public void deleteBoard(int boardNo) {
 
 	}
+	@Override
+	public Map<String, Object> doSearch(Map<String, String> map) {
+		
+		// map에서 get("condition) / get("keyword") 값 비었는지 유효성검사 했다침 로그인이랑 동일
+		
+		int searchedCount= boardMapper.searchedCount(map);
+		
+		log.info("몇갠데 : {}" , searchedCount);
+		
+		PageInfo pi = pagination.getPageInfo(searchedCount,
+								Integer.parseInt(map.get("currentPage")),
+								3,
+								3);
+		
+		RowBounds rb = new RowBounds((pi.getCurrentPage() -1) * 3, 3);
+		
+		List<BoardDTO> boards = boardMapper.selectSearchList(map,rb);
+		
+		Map<String, Object> returnValue = new HashMap();
+		returnValue.put("boards", boards);
+		returnValue.put("pageInfo", pi);
+		
+		return returnValue;
+	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

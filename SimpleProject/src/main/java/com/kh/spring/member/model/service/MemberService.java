@@ -24,5 +24,11 @@ public interface MemberService { // 인터페이스 = 약관 계약서
 	int delete(MemberDTO member);
 	
 	//1절끝
+	
+	String idCheck(MemberDTO member);
+
+	String idCheck(String memberId);
+	
+	
 }
 

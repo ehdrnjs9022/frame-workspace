@@ -120,5 +120,33 @@ public class MemberServiceImp implements MemberService {
     public int delete(MemberDTO member) {
         // TODO Auto-generated method stub
         return 0;
+
+
+    
+    
     }
+
+    @Override
+    public String idCheck(String memberId) {
+    	
+    	String result = memberMapper.idCheck(memberId) !=null ? "NNNNY" : "NNNNN";
+    	
+    	return null;
+    }
+
+	@Override
+	public String idCheck(MemberDTO member) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 }
+
+
+
+
+
+
+
