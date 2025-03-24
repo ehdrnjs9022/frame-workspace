@@ -117,13 +117,18 @@
 	<h3>1. 버튼을 클릭 했을 때 GET방식으로 서버에 데이터를 전송하고 응답을 받아보기</h3>
 	
 	<div class="form-group">
+	
 		<div class="form-control">
 				입력 : <input type="text" id="ajax-input">
 		</div>
+		<div class="form-control"> 
 			<button class="btn btn-sm btn-primary" id="ajax-btn">AJAX로 요청보내기</button>
+		</div>
 	</div>
 	
 	응답 : <label id="result">현재 응답 없음</label>
+	
+	
 	
 	<!--  
 		우리의 계획 :
@@ -141,7 +146,7 @@
 			
 			$.ajax({
 				url : `test?input=\${inputValue}`,
-				type : 'get',
+				type : 'GET',
 				success : function(result){
 				
 					//console.log(result);

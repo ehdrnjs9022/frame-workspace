@@ -43,7 +43,7 @@
 							//console.log(result);
 						
 							const responseData = result.substr(4);
-							console.log(respnseData);
+							console.log(responseData);
 						
 							if(responseData === 'Y'){
 								 
@@ -64,7 +64,7 @@
 					});	
 					
 				} else{
-					$('check-result').hide();
+					$('#check-result').hide();
 				}
 				
 			});	

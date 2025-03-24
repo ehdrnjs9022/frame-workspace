@@ -1,0 +1,12 @@
+.val()	input 요소의 값을 가져온다 (read)
+.val('값')	input 요소의 값을 설정한다 (write)
+.val()는 input 태그의 값(value)을 읽거나 쓸 때 사용하는 jQuery 메서드입니다
+
+메서드명	뜻풀이	예시
+getElementById	고유한 id로 요소 선택	document.getElementById("id")
+getElementsByClassName	클래스명으로 요소 선택	document.getElementsByClassName("클래스명")
+getElementsByTagName	태그명으로 요소 선택	document.getElementsByTagName("div")
+getElementByName             ("name" , 속성값)
+
+querySelector	CSS 선택자로 하나의 요소 선택	document.querySelector(".클래스명")
+querySelectorAll	CSS 선택자로 모든 요소 선택	document.querySelectorAll("div.item").
