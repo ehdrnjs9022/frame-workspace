@@ -1,0 +1,10 @@
+데이터 조회	GET	상품 목록 보기, 날씨 정보 가져오기
+데이터 생성/수정	POST	로그인, 회원가입, 댓글 작성
+
+ @ResponseBody 
+컨트롤러에서 return "greeting" 했을때 js 서버를 통해 넘겨줄때
+미사용시 -> 스프링이 뷰 이름( greeting.jsp )으로 인식해서 찾음
+사용시    -> "greeting" 문자ㅣ열 jsp이름이 아니고 그대로 브라우저에 출력됨!
+
+BufferedReader br = new BufferedReader(new InputStreamReader(is));
+InputStreamReader -> 바이트 데이터를 문자데이터(텍스터)로 변경해준다
