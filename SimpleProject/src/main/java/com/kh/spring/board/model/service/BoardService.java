@@ -53,7 +53,7 @@ public interface BoardService {
 	
 	// 댓글작성
 	
-	
+	int insertReply(ReplyDTO reply, HttpSession session);
 	
 	
 

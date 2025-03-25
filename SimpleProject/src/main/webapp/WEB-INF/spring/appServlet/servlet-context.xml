@@ -24,5 +24,25 @@
 	<context:component-scan base-package="com.kh.spring" />
 	
 	
+<!-- 잠간주석처리집에서 ㄱ 
+	<interceptors>
+		<interceptor>
+			<mapping path="/my-page/**"/>
+			<mapping path="/form.bo/**"/>
+			<beans:bean class="com.kh.spring.util.interceptor.loginInterceptor" id="loginInterceptor"/>
+		</interceptor>
+	
+	
+	</interceptors>
+	
+	
+	 -->
+	
+	
+	
+	
+	
+	
+	
 	
 </beans:beans>

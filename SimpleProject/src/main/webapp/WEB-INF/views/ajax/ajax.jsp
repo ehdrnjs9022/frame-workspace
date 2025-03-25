@@ -11,8 +11,7 @@
 
 	<h1>AJAX</h1>
 	
-	</pre>
-	<include page ="../include/header.jsp"/>
+	<jsp:include page ="../include/header.jsp"/>
 	<pre>
 		Asynchronous Javascript and XML
 		서버로부터 데이터를 응답받아서 전체 페이지를 새롭게 랜더링하지 않고,
@@ -24,7 +23,7 @@
 		* 동기식 / 비동기식 요청 차이
 		
 		- 동기식 : 요청 처리 후 응답 HTML데이터를 받아 화면에 렌더링 한 뒤에만 작업이 가능
-				 만약에 서버에서 응답데이터를 돌려주는 시간이 지연되면 무작정 기다림
+				 만약에 서버에서 응답	데이터를 돌려주는 시간이 지연되면 무작정 기다림
 				 전체 화면이 새로고침됨 -> 페이지가 깜빡
 		
 		- 비동기식 :현재 페이지는 그대로 유지하면서 중간중간 추가적인 요청을 보낼 수 있음
@@ -166,14 +165,81 @@
 	<h3>VO단일 객체를 조회해서 출력해보기</h3>
 	
 	<div>
-		댓글 번호 : <p id="title"></p>
-		댓글 작성자 : <p id="writer"></p>
-		댓글 내용 : <p id="content"></p>
-		댓글 작성일 : <p id="date"></p>
+		게시글 제목   : <p id="title"></p>
+		게시글 작성자  : <p id="writer"></p>
+		게시글 내용   : <p id="content"></p>
+		게시글 작성일  : <p id="date"></p>
+		<img id="board-img"/>
+		<hr>
+		<div id="reply-area">
+			
+		</div>
+		
 	</div>
 
 	댓글 번호 : <input type="text" id="replyNo">
-	<buttton onclick="selectReply()">댓글보여주세요</buttton>
+	<button onclick="selectReply()">게시글 보여주세요</button>
+	
+	<script>
+	
+		function selectReply(){
+			
+			const replyNo = document.getElementById('replyNo').value;
+			
+			$.ajax({
+				
+				url : `study?replyNo=\${replyNo}`,
+				type: 'get',
+				success: result => {
+					console.log(result);
+					// 응답받은 데이터를 화면에 출력
+					document.querySelector('#title').innerText=result.boardTitle;
+					document.querySelector('#writer').innerText=result.boardWriter;
+					document.querySelector('#content').innerText=result.boardContent;
+					document.querySelector('#date').innerText=result.createDate;
+					
+					const imgEl = document.querySelector('#board-img');
+					imgEl.src = result.changeName != undefined ? result.changeName : '';
+					
+					const reply = result.replyList;
+					
+					const elements = reply.map(e => {
+					return(`<div>
+						<label>댓글 작성자 : \${e.replyWriter}</label> 				
+						<label>댓글 내용 : \${e.replyContent}</label> 				
+						<label>댓글 작성일 : \${e.createDate}</label> 			
+					</div>`)
+				}).join('');
+					
+						
+				
+					document.querySelector('#reply.area').innerHTML=elements;
+					
+				}
+				
+			});
+			
+		}
+	
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
