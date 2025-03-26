@@ -22,4 +22,11 @@ public class ApiFowardController {
 		return "api/map";
 	}
 	
+	
+	@GetMapping("shopping")
+	public String shoppingPage() {
+			return "api/shopping";
+	}
+	
 }
+

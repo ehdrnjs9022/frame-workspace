@@ -1,0 +1,52 @@
+Client -> Tomcat 안에 Spring Container -> Dispatcher Servlet 
+-> HandlerMapping(요청처리해줄 컨트롤러 찾고) -> Handler Adapter(변환역할) 
+-> Controller(매핑값을줌,class)
+
+1. @Repository
+DAO 클래스에 붙이는 애노테이션
+이 클래스가 DB랑 직접 연결되는 클래스임을 스프링에게 알려주는 명찰(표시) 역할
+스프링이 내부적으로 예외 처리, 의존성 주입 등을 자동으로 도와준다.
+
+- 이 클래스는 DB 접근 담당이에요!" 라고 스프링에게 알려주는 거예요.
+
+2. @RequestMapping(url path )
+URL 경로를 지정하는 애노테이션
+@Controller
+@RequestMapping( "/mebmer") 선언을해놓고 
+public class MemberController { ... }
+@GetMapping("/login-form") 실행할메서드  
+ public String loginForm()
+
+3. @Controller 어떤메서드를 실행할지 연결
+해당 클래스가 웹 요청을 처리하는 컨트롤러임을 선언
+
+web.xml은 뭐 하는 곳이냐?
+서블릿(Servlet)과 필터(Filter), 리스너(Listener) 등의 ‘서버 시작 시 필요한 설정’을 등록해두는 곳
+/로 들어오는 모든 요청은 DispatcherServlet이 처리하겠다는 뜻입니다.
+
+4. @RequiredArgsConstructor ( 롬복)
+Lombok을 사용하여 자동으로 생성자(매개변수있는)를 만들어 주는 어노테이션
+( 필드 final 선언을 하여 매개변수있는 생성자로 spring에서 값을 넣어 필드에 값을 저장함)
+-> 그 후 spring이 객체 자동으로 생성
+
+5.@Autowired
+Spring 컨테이너에서 관리되고 있는 객체(빈)를 주입하려는 대상인 필드나 생성자에
+ 값(즉, 객체)을 자동으로 넣어줍니다.
+
+데이터 조회	GET	상품 목록 보기, 날씨 정보 가져오기
+데이터 생성/수정	POST	로그인, 회원가입, 댓글 작성
+
+ @ResponseBody 
+- 컨트롤러에서 데이터만 보내기 위해 사용
+컨트롤러 메서드가 반환하는 값을 **응답 본문(body)**으로 직접 보내는 거야. 
+이때 JSP나 뷰 파일을 렌더링하는 게 아니라, 데이터(문자열, JSON 등)를
+ 그대로 응답 본문에 담아서 클라이언트에 보내는 거지!
+
+
+BufferedReader br = new BufferedReader(new InputStreamReader(is));
+InputStreamReader -> 바이트 데이터를 문자데이터(텍스터)로 변경해준다
+
+
+
+
+html 부트스트립
