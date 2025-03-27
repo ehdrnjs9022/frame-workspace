@@ -1,0 +1,13 @@
+package com.kh.spring.api.home.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+
+public class FoodsController {
+
+	
+	public 
+	
+	
+}
