@@ -16,16 +16,12 @@
 	 -->
 	
 	
-	
-	
-	
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.kh</groupId>
 	<artifactId>spring</artifactId>
 	<name>SimpleProject</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
-	
 	
 	<!--
 		- properties(속성) : 문서내에서 사용할 값들을 담는 태그
@@ -61,6 +57,7 @@
 				 </exclusion>
 			</exclusions>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
